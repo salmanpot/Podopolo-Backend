@@ -3,6 +3,7 @@ import {
   createTweet,
   deleteTweet,
   getUserFeed,
+  getUserTweet,
   handleTweetLikeStatus,
   updateTweet,
 } from "../../controllers/tweet.controller";
@@ -22,7 +23,7 @@ tweetRoute.post(
   createTweet
 );
 
-tweetRoute.delete("/:id", auth("tweet"), deleteTweet);
+tweetRoute.delete("/:id", auth("tweet"), getUserTweet);
 
 tweetRoute.patch(
   "/:id",
