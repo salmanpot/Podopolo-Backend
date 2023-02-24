@@ -9,13 +9,12 @@ import {
 } from "../../controllers/tweet.controller";
 import auth from "../../middlewares/auth";
 import validate from "../../middlewares/validate";
-import { getUserTweets, likeTweet } from "../../services/tweet.service";
 import * as tweetValidations from "../../validations/tweet.validation";
 const tweetRoute = express.Router();
 
 tweetRoute.get("/feed", auth("tweet"), getUserFeed);
 
-tweetRoute.get("/", auth("tweet"), getUserTweets);
+tweetRoute.get("/", auth("tweet"), getUserTweet);
 
 tweetRoute.post(
   "/create",
@@ -23,7 +22,7 @@ tweetRoute.post(
   createTweet
 );
 
-tweetRoute.delete("/:id", auth("tweet"), getUserTweet);
+tweetRoute.delete("/:id", auth("tweet"), deleteTweet);
 
 tweetRoute.patch(
   "/:id",

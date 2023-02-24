@@ -88,7 +88,7 @@ describe("Tweet", () => {
       .get("/v1/tweet")
       .set("Authorization", `Bearer ${token}`)
       .end((err, res) => {
-        tweetId = res.body.tweets[0]._id;
+        tweetId = res.body.tweets[0]?._id;
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         done();
